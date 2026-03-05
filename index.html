@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jayashankar Bhupalpally Tourism</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+transition:0.4s;
+}
+
+body.light{
+background:linear-gradient(135deg,#f1f5f9,#e2e8f0);
+color:#0f172a;
+}
+
+/* NAVBAR */
+header{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+background:#020617;
+z-index:1000;
+}
+
+header h1{
+color:#38bdf8;
+}
+
+nav{
+display:flex;
+gap:20px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+}
+
+.menu-toggle{
+display:none;
+font-size:24px;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+nav{
+position:absolute;
+top:70px;
+right:0;
+background:#020617;
+flex-direction:column;
+width:200px;
+display:none;
+padding:20px;
+}
+nav.active{
+display:flex;
+}
+.menu-toggle{
+display:block;
+}
+}
+
+/* SECTION */
+section{
+padding:120px 8%;
+min-height:100vh;
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+h2{
+margin-bottom:20px;
+color:#38bdf8;
+}
+
+/* TOURISM CARD */
+.place-card{
+background:#1e293b;
+padding:20px;
+border-radius:15px;
+margin-bottom:50px;
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+transition:0.4s;
+}
+
+.place-card:hover{
+transform:scale(1.02);
+box-shadow:0 0 25px #38bdf8;
+}
+
+.place-card img{
+width:100%;
+height:300px;
+object-fit:cover;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+/* BOOKING FORM */
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
+max-width:400px;
+}
+
+input,select{
+padding:10px;
+border-radius:8px;
+border:none;
+}
+
+button{
+padding:10px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+background:linear-gradient(45deg,#38bdf8,#22c55e);
+color:black;
+font-weight:bold;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+/* ADMIN */
+.admin-box{
+background:#0f172a;
+padding:20px;
+border-radius:15px;
+}
+
+iframe{
+width:100%;
+height:300px;
+border-radius:15px;
+margin-top:20px;
+border:none;
+}
+
+footer{
+text-align:center;
+padding:30px;
+background:#020617;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Bhupalpally Tourism</h1>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<nav id="nav">
+<a href="#">Home</a>
+<a href="#places">Places</a>
+<a href="#booking">Booking</a>
+<a href="#admin">Admin</a>
+<button onclick="toggleLanguage()">🌐</button>
+<button onclick="toggleTheme()">🌙</button>
+</nav>
+</header>
+<!-- ABOUT BHUPALPALLY DISTRICT -->
+<section id="about">
+<h2>About Jayashankar Bhupalpally District</h2>
+
+<div class="place-card">
+
+<img src="bhupalpalli.jpg" alt="Bhupalpally District">
+
+<p>
+Jayashankar Bhupalpally district is one of the forest-rich districts of Telangana.
+It was formed on October 11, 2016, after the reorganization of districts in the state.
+The district is named after Professor K. Jayashankar, a prominent Telangana ideologist.
+</p>
+
+<p>
+The district is covered with dense forests, rivers, waterfalls, and mineral resources.
+A large part of the district lies under the Godavari river basin.
+It plays an important role in eco-tourism and tribal culture preservation.
+</p>
+
+<p>
+Bhupalpally district is home to several tribal communities who follow traditional lifestyles.
+Agriculture, forestry, and small-scale industries are the major occupations.
+The region is also rich in historical heritage from the Kakatiya dynasty.
+</p>
+
+<p>
+The district headquarters is located in Bhupalpally town.
+Due to its natural beauty and historical importance, the district is emerging as a major tourism destination in Telangana.
+</p>
+
+</div>
+</section>
+<!-- TOURISM PLACES -->
+<section id="places">
+<!-- DISTRICT FACTS BOX -->
+<section id="facts">
+<h2>District Quick Facts</h2>
+
+<div class="place-card">
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;text-align:center;">
+
+<div>
+<h3>Area</h3>
+<p>2,984 sq km</p>
+</div>
+
+<div>
+<h3>Population</h3>
+<p><span id="populationCounter">0</span>+</p>
+</div>
+
+<div>
+<h3>Mandals</h3>
+<p>11 Mandals</p>
+</div>
+
+<div>
+<h3>Major Rivers</h3>
+<p>Godavari Basin Region</p>
+</div>
+
+<div>
+<h3>Forest Cover</h3>
+<p>~65%</p>
+</div>
+
+</div>
+
+</div>
+</section>
+<!-- HISTORY TIMELINE -->
+<section id="timeline">
+<h2>History of Bhupalpally District</h2>
+
+<div class="place-card">
+
+<div style="border-left:4px solid #38bdf8;padding-left:20px;">
+
+<p><strong>12th – 13th Century:</strong><br>
+Region flourished under the Kakatiya dynasty. Major constructions like Ramappa Temple were built.</p>
+
+<br>
+
+<p><strong>Medieval Period:</strong><br>
+Area came under different rulers including Qutb Shahi and Asaf Jahi dynasties.</p>
+
+<br>
+
+<p><strong>1948:</strong><br>
+Integrated into Indian Union after Hyderabad State merger.</p>
+
+<br>
+
+<p><strong>2016:</strong><br>
+Officially formed as Jayashankar Bhupalpally district during Telangana district reorganization.</p>
+
+</div>
+
+</div>
+</section>
+<h2>Major Tourism Places</h2>
+
+<!-- Laknavaram -->
+<div class="place-card">
+<img src="lakhnavaram.jpg">
+<h3>Laknavaram Lake</h3>
+<p>
+Laknavaram Lake was developed during the Kakatiya dynasty period.
+It is surrounded by lush green forests and hills.
+The suspension bridge connecting islands makes it one of the most scenic tourist attractions in Telangana.
+</p>
+<iframe src="https://www.google.com/maps?q=Laknavaram+Lake+Telangana&output=embed"></iframe>
+</div>
+
+<!-- Ramappa -->
+<div class="place-card">
+<img src="1090476-ramppa.jpg">
+<h3>Ramappa Temple</h3>
+<p>
+Ramappa Temple, built in 1213 CE during the Kakatiya rule, is a UNESCO World Heritage Site.
+It is famous for its floating bricks and detailed carvings.
+The temple showcases advanced engineering skills of ancient India.
+</p>
+<iframe src="https://www.google.com/maps?q=Ramappa+Temple+Telangana&output=embed"></iframe>
+</div>
+
+<!-- Bogatha -->
+<div class="place-card">
+<img src="maxresdefault.jpg">
+<h3>Bogatha Waterfall</h3>
+<p>
+Bogatha Waterfall is known as the Niagara of Telangana.
+It is located in dense forest region of Bhupalpally district.
+The waterfall becomes very powerful during monsoon season.
+</p>
+<iframe src="https://www.google.com/maps?q=Bogatha+Waterfall+Telangana&output=embed"></iframe>
+</div>
+
+<!-- Yamanpalli -->
+<div class="place-card">
+<img src="yamanpalli.jpg">
+<h3>Yamanpalli Village</h3>
+<p>
+Yamanpalli village is located in Jayashankar Bhupalpally district.
+It represents traditional Telangana rural lifestyle.
+The village is surrounded by agricultural lands and natural greenery.
+</p>
+<iframe src="https://www.google.com/maps?q=Yamanpalli+Bhupalpally+Telangana&output=embed"></iframe>
+</div>
+
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+<h2>Hotel Booking & Payment</h2>
+<form onsubmit="bookNow(event)">
+<input type="text" placeholder="Full Name" required>
+<select required>
+<option>Select Hotel</option>
+<option>Lake View Resort</option>
+<option>Forest Eco Stay</option>
+<option>Temple Inn</option>
+</select>
+<input type="date" required>
+<select required>
+<option>Payment Method</option>
+<option>UPI</option>
+<option>Credit Card</option>
+<option>Debit Card</option>
+</select>
+<button type="submit">Pay & Book</button>
+</form>
+<p id="bookingMsg"></p>
+</section>
+
+<!-- ADMIN -->
+<section id="admin">
+<h2>Admin Dashboard</h2>
+<div class="admin-box">
+<p>Total Visitors: <span id="visitors">100000</span></p>
+<p>Total Bookings: <span id="bookings">540</span></p>
+<button onclick="updateAdmin()">Simulate Update</button>
+</div>
+</section>
+<!-- BIG EXPLORE BANNER -->
+<section id="explore-banner" style="
+background:url('images/laknavaram.jpg') center/cover no-repeat;
+height:400px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+position:relative;
+">
+
+<div style="
+background:rgba(0,0,0,0.6);
+padding:40px;
+border-radius:20px;
+animation: glow 2s infinite alternate;
+">
+
+<h1 style="font-size:40px;">Explore Bhupalpally</h1>
+<p style="margin-top:15px;font-size:18px;">
+Discover Nature • Experience Heritage • Feel Telangana Culture
+</p>
+
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 Jayashankar Bhupalpally Tourism</p>
+
+<hr style="margin:20px 0;opacity:0.3;">
+
+<h3>Developed By</h3>
+<p><strong>pilumari charan kumar</strong></p>
+<p>Web Developer | Telangana</p>
+<p>Email: crazycharan43@gmail.com</p>
+<p>Phone: +91 7095027310</p>
+
+<div style="margin-top:15px;">
+<a href="https://github.com/CHARANKUMAR2005" target="_blank" style="color:#38bdf8;margin-right:15px;">GitHub</a>
+<a href="https://www.linkedin.com/in/charan-kumar-048a79321?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" style="color:#38bdf8;">LinkedIn</a>
+</div>
+
+</footer>
+/* POPULATION COUNTER ANIMATION */
+let count=0;
+let target=416763;  // Approx district population
+let counter=setInterval(()=>{
+count+=2000;
+if(count>=target){
+count=target;
+clearInterval(counter);
+}
+document.getElementById("populationCounter").innerText=count.toLocaleString();
+},10);
+
+/* GLOW ANIMATION */
+const style=document.createElement('style');
+style.innerHTML=`
+@keyframes glow{
+from{box-shadow:0 0 20px #38bdf8;}
+to{box-shadow:0 0 40px #22c55e;}
+}
+`;
+document.head.appendChild(style);
+<script>
+
+/* MENU */
+function toggleMenu(){
+document.getElementById("nav").classList.toggle("active");
+}
+
+/* THEME */
+function toggleTheme(){
+document.body.classList.toggle("light");
+}
+
+/* BOOKING */
+function bookNow(e){
+e.preventDefault();
+document.getElementById("bookingMsg").innerHTML="✅ Booking Successful! Payment Received.";
+}
+
+/* ADMIN UPDATE */
+function updateAdmin(){
+document.getElementById("visitors").innerText=parseInt(Math.random()*200000);
+document.getElementById("bookings").innerText=parseInt(Math.random()*1000);
+}
+
+/* SCROLL ANIMATION */
+const sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top<window.innerHeight-100){
+sec.classList.add("show");
+}
+});
+});
+
+</script>
+
+</body>
+</html>
